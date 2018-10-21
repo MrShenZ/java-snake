@@ -26,35 +26,10 @@ public enum Direction {
      * @return
      */
     public boolean compatibleWith(Direction direction) {
-        switch(direction){
-        case UP:
-        	LEFT.equals(true);
-        	RIGHT.equals(true);
-        	DOWN.equals(false);
-        	UP.equals(false);
-        	break;
-        case RIGHT:
-        	UP.equals(true);
-        	DOWN.equals(true);
-        	LEFT.equals(false);
-        	RIGHT.equals(false);
-        	break;
-        case DOWN:
-        	LEFT.equals(true);
-        	RIGHT.equals(true);
-        	DOWN.equals(false);
-        	UP.equals(false);
-        	break;
-        case LEFT:
-        	UP.equals(true);
-        	DOWN.equals(true);
-        	LEFT.equals(false);
-        	RIGHT.equals(false);
-        	break;
+        if(Math.abs(direction.directionCode()-directionCode)!=2){
+        	return true;
+        }else{
+        	return false;
         }
-        return true;
-    }
-    public static void main(String args[]){
-    	
     }
 }
