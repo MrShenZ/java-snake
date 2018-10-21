@@ -30,20 +30,28 @@ public enum Direction {
         case UP:
         	LEFT.equals(true);
         	RIGHT.equals(true);
+        	DOWN.equals(false);
+        	UP.equals(false);
         	break;
         case RIGHT:
         	UP.equals(true);
         	DOWN.equals(true);
+        	LEFT.equals(false);
+        	RIGHT.equals(false);
         	break;
         case DOWN:
         	LEFT.equals(true);
         	RIGHT.equals(true);
+        	DOWN.equals(false);
+        	UP.equals(false);
         	break;
         case LEFT:
         	UP.equals(true);
         	DOWN.equals(true);
+        	LEFT.equals(false);
+        	RIGHT.equals(false);
         	break;
         }
-        return false;
+        return true;
     }
 }
