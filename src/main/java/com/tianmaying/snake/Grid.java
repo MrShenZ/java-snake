@@ -2,7 +2,10 @@ package com.tianmaying.snake;
 
 
 public class Grid {
-    private Snake snake=null;
+    private Snake snake;
+    {
+    	snake=new Snake();
+    }
     private int width;
     private int height;
     public Grid(int width, int height) {
