@@ -26,7 +26,16 @@ public enum Direction {
      * @return
      */
     public boolean compatibleWith(Direction direction) {
-        // your code here
+        switch(direction){
+        case UP:
+        	DOWN.equals(false);
+        case RIGHT:
+        	LEFT.equals(false);
+        case DOWN:
+        	UP.equals(false);
+        case LEFT:
+        	RIGHT.equals(false);
+        }
         return true;
     }
 }
