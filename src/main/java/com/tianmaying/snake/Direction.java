@@ -26,10 +26,6 @@ public enum Direction {
      * @return
      */
     public boolean compatibleWith(Direction direction) {
-        if(Math.abs(direction.directionCode()-directionCode)!=2){
-        	return true;
-        }else{
-        	return false;
-        }
+        return (this.directionCode() + direction.directionCode()) % 2 == 1;
     }
 }
