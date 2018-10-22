@@ -42,7 +42,7 @@ public class Snake {
 	        	break;
         }
     	newHead=new Node(headX, headY);
-    	body.set(0, newHead);
+    	body.add(0, newHead);
         return body.removeLast();
     }
 
