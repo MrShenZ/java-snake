@@ -10,6 +10,8 @@ public class Snake {
     public Node eat(Node food) {
         if(isNeighbor(body.getFirst(), food)){
         	body.addLast(food);
+        	newHead=food;
+        	body.addFirst(food);
         	return food;
         }else{
         	return null;
