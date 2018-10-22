@@ -30,19 +30,15 @@ public class Snake {
     	switch(direction){
 	        case UP:
 	        	headY=+1;
-	        	break;
 	        case RIGHT:
 	        	headX=+1;
-	        	break;
 	        case DOWN:
 	        	headY=-1;
-	        	break;
 	        case LEFT:
 	        	headX=-1;
-	        	break;
         }
     	newHead=new Node(headX, headY);
-    	body.add(0, newHead);
+    	body.addFirst(newHead);
         return body.removeLast();
     }
 
