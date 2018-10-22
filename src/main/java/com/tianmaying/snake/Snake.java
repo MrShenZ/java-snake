@@ -29,13 +29,13 @@ public class Snake {
         int headY=body.getFirst().getY();
     	switch(direction){
 	        case UP:
-	        	headY=-1;
+	        	headY=+1;
 	        	break;
 	        case RIGHT:
 	        	headX=+1;
 	        	break;
 	        case DOWN:
-	        	headY=+1;
+	        	headY=-1;
 	        	break;
 	        case LEFT:
 	        	headX=-1;
