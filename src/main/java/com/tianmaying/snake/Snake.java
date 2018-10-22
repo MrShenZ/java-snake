@@ -11,7 +11,7 @@ public class Snake {
         if(isNeighbor(body.getFirst(), food)){
         	body.addLast(food);
         	newHead=food;
-        	body.addFirst(food);
+        	body.set(0, newHead);
         	return food;
         }else{
         	return null;
@@ -42,7 +42,7 @@ public class Snake {
 	        	break;
         }
     	newHead=new Node(headX, headY);
-    	body.addFirst(newHead);
+    	body.set(0, newHead);
         return body.removeLast();
     }
 
