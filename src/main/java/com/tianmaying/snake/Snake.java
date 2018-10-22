@@ -4,11 +4,13 @@ import java.util.LinkedList;
 
 public class Snake {
 
-    private static final Node newHead = null;
+    private static Node newHead = null;
 	private final LinkedList<Node> body = new LinkedList<>();
 
     public Node eat(Node food) {
         if(isNeighbor(body.getFirst(), food)){
+        	newHead=food;
+        	body.addFirst(newHead);
         	addTail(food);
         	return food;
         }else{
@@ -39,7 +41,7 @@ public class Snake {
 	        	headX=-1;
 	        	break;
         }
-    	Node newHead=new Node(headX, headY);
+    	newHead=new Node(headX, headY);
     	body.addFirst(newHead);
         return body.removeLast();
     }
