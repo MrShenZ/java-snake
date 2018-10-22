@@ -9,9 +9,7 @@ public class Snake {
 
     public Node eat(Node food) {
         if(isNeighbor(body.getFirst(), food)){
-        	newHead=food;
-        	body.addFirst(newHead);
-        	addTail(food);
+        	body.addLast(food);
         	return food;
         }else{
         	return null;
