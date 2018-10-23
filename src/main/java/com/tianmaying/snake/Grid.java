@@ -1,6 +1,7 @@
 package com.tianmaying.snake;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Grid {
 
@@ -45,12 +46,15 @@ public class Grid {
      * @return
      */
     public Node createFood() {
-
-        int x = 0, y = 0;
-
+    	Random random=new Random();
         // your code here
-
-        food = new Node(x, y);
+    	boolean flag=false;
+        while(flag==false){
+        	int x =random.nextInt(getWidth());
+        	int y=random.nextInt(getHeight());
+        	food = new Node(x,y);
+        	flag=validPosition(food);
+        }
         return food;
     }
 
@@ -79,7 +83,7 @@ public class Grid {
         return x >= 0 && x < width && y >= 0 && y < height && !status[x][y];
     }
 
-    private void Place(Node node) {
+    private void place(Node node) {
         status[node.getX()][node.getY()] = false;
     }
 
