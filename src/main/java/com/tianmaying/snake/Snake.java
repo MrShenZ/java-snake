@@ -4,18 +4,16 @@ import java.util.LinkedList;
 
 public class Snake {
 
-    private static Node newHead = null;
-	private final LinkedList<Node> body = new LinkedList<>();
+    private final LinkedList<Node> body = new LinkedList<>();
 
     public Node eat(Node food) {
-        if(isNeighbor(body.getFirst(), food)){
-        	body.addLast(food);
-        	newHead=food;
-        	body.set(0, newHead);
-        	return food;
-        }else{
-        	return null;
+
+        if (!isNeighbor(body.getFirst(), food)) {
+            return null;
         }
+
+        body.addFirst(food);
+        return food;
     }
 
     /**
@@ -25,24 +23,25 @@ public class Snake {
      * @return <code>Snake</code>原来的尾部，即最后一个<code>SquareArea</code>
      */
     public Node move(Direction direction) {
-        int headX=body.getFirst().getX();
-        int headY=body.getFirst().getY();
-    	switch(direction){
-	        case UP:
-	        	headY--;
-	        	break;
-	        case RIGHT:
-	        	headX++;
-	        	break;
-	        case DOWN:
-	        	headY++;
-	        	break;
-	        case LEFT:
-	        	headX--;
-	        	break;
+        int x = body.getFirst().getX();
+        int y = body.getFirst().getY();
+
+        switch (direction) {
+            case UP:
+                y--;
+                break;
+            case RIGHT:
+                x++;
+                break;
+            case DOWN:
+                y++;
+                break;
+            case LEFT:
+                x--;
+                break;
         }
-    	newHead=new Node(headX, headY);
-    	body.addFirst(newHead);
+
+        body.addFirst(new Node(x, y));
         return body.removeLast();
     }
 
