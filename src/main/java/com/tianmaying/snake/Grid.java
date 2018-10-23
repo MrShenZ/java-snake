@@ -31,10 +31,9 @@ public class Grid {
      */
     private Snake initSnake() {
         snake = new Snake();
-        LinkedList<Node> body=snake.getBody();
         for(int i=0;i<getWidth()/3;++i){
         	Node node=new Node((getWidth()/2)+i,getHeight()/2);
-        	body.add(node);
+        	snake.addTail(node);
         	noPlace(node);
         }
         // your code here：用一个循环设置Snake的Body并更新棋盘覆盖状态
@@ -66,9 +65,17 @@ public class Grid {
     public boolean nextRound() {
         Node snakeTail = snake.move(snakeDirection);
         Node snakeHead = snake.getHead();
-
         // your code here
-
+        if(validPosition(snakeHead)){
+        	if(isFood(snakeHead)){
+        		snake.addTail(snakeTail);
+        		createFood();
+        	}
+        	for(Node aBody:snake.getBody()){
+        		noPlace(aBody);
+        	}
+        	return true;
+        }
         return false;
     }
     
