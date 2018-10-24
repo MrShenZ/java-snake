@@ -70,8 +70,9 @@ public class Grid {
         	if(isFood(snakeHead)){
         		snake.addTail(snakeTail);
         		createFood();
+        	}else{
+        		place(snakeTail);
         	}
-        	place(snakeTail);
         	noPlace(snake.getHead());
         	return true;
         }
