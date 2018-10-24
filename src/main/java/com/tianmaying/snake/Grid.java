@@ -66,15 +66,13 @@ public class Grid {
         Node snakeTail = snake.move(snakeDirection);
         Node snakeHead = snake.getHead();
         // your code here
-        snake.move(snakeDirection);
         if(validPosition(snakeHead)){
         	if(isFood(snakeHead)){
         		snake.addTail(snakeTail);
         		createFood();
         	}
-        	for(Node aBody:snake.getBody()){
-        		noPlace(aBody);
-        	}
+        	place(snakeTail);
+        	noPlace(snakeHead);
         	return true;
         }
         return false;
