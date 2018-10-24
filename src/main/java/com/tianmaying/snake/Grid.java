@@ -72,7 +72,7 @@ public class Grid {
         		createFood();
         	}
         	place(snakeTail);
-        	noPlace(snakeHead);
+        	noPlace(snake.getHead());
         	return true;
         }
         return false;
