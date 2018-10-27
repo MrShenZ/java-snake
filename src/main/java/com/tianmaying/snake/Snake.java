@@ -40,6 +40,7 @@ public class Snake {
                 x--;
                 break;
         }
+
         body.addFirst(new Node(x, y));
         return body.removeLast();
     }

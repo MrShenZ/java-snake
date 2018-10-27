@@ -1,6 +1,6 @@
 package com.tianmaying.snake;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Grid {
@@ -19,63 +19,58 @@ public class Grid {
 
         this.width = width;
         this.height = height;
-        status = new boolean[width][height];
 
+        status = new boolean[width][];
+        for (int i = 0; i < width; ++i) {
+            status[i] = new boolean[height];
+            Arrays.fill(status[i], false);
+        }
         initSnake();
         createFood();
     }
 
-    /**
-     * 初始化棋盘上的贪吃蛇
-     * @return
-     */
     private Snake initSnake() {
         snake = new Snake();
-        for(int i=0;i<getWidth()/3;++i){
-        	Node node=new Node((getWidth()/2)+i,getHeight()/2);
-        	snake.addTail(node);
-        	noPlace(node);
+
+        int initialSnakeBodyLength = width / 3;
+        for (int i = initialSnakeBodyLength - 1; i >= 0; --i) {
+            int x = width / 2 + i;
+            int y = height / 2;
+            snake.getBody().addFirst(new Node(x, y));
+            status[x][y] = true;
         }
-        // your code here：用一个循环设置Snake的Body并更新棋盘覆盖状态
+
         return snake;
     }
 
-    /**
-     * 随机产生一个食物（Node类型），并返回该Node
-     * @return
-     */
     public Node createFood() {
-    	Random random=new Random();
-        // your code here
-    	boolean flag=false;
-        while(flag==false){
-        	int x =random.nextInt(getWidth());
-        	int y=random.nextInt(getHeight());
-        	food = new Node(x,y);
-        	flag=validPosition(food);
-        }
+        int x, y;
+
+        do {
+            Random r = new Random();
+            x = r.nextInt(width);
+            y = r.nextInt(height);
+        } while (status[x][y]);
+
+        food = new Node(x, y);
         return food;
     }
 
-    /**
-     * 贪吃蛇往snakeDirection方向移动一格
-     *
-     * @return 如果游戏结束，返回false，否则返回true
-     */
     public boolean nextRound() {
         Node snakeTail = snake.move(snakeDirection);
         Node snakeHead = snake.getHead();
-        // your code here
-        if(validPosition(snakeHead)){
-        	if(isFood(snakeHead)){
-        		snake.addTail(snakeTail);
-        		createFood();
-        	}else{
-        		place(snakeTail);
-        	}
-        	noPlace(snake.getHead());
-        	return true;
+
+        if (validPosition(snakeHead)) {
+            if (isFood(snakeHead)) {
+                snake.addTail(snakeTail);
+                createFood();
+            } else {
+                dispose(snakeTail);
+            }
+            occupy(snakeHead);
+            return true;
         }
+        
         return false;
     }
     
@@ -90,11 +85,11 @@ public class Grid {
         return x >= 0 && x < width && y >= 0 && y < height && !status[x][y];
     }
 
-    private void place(Node node) {
+    private void dispose(Node node) {
         status[node.getX()][node.getY()] = false;
     }
 
-    private void noPlace(Node node) {
+    private void occupy(Node node) {
         status[node.getX()][node.getY()] = true;
     }
 
@@ -103,7 +98,7 @@ public class Grid {
         int x = area.getX(), y = area.getY();
         return x == food.getX() && y == food.getY();
     }
-
+    
     public Node getFood() {
         return food;
     }
