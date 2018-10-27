@@ -59,7 +59,7 @@ public class GameView {
      */
     public void drawGridBackground(Graphics graphics) {
         graphics.setColor(Settings.DEFAULT_BACKGROUND_COLOR);
-        graphics.fillRect(0, 0, grid.getWidth(), grid.getHeight());
+        graphics.fillRect(0, 0,Settings.DEFAULT_GRID_WIDTH, Settings.DEFAULT_GRID_HEIGHT);
         // your code here
     }
 
