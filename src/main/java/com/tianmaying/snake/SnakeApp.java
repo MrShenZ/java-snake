@@ -3,13 +3,13 @@ package com.tianmaying.snake;
 import javax.swing.*;
 import java.awt.*;
 
-public class SnakeApp {
+public class SnakeApp implements Runnable {
     
     Grid grid;
     GameView gameView;
     GameController gameController;
 
-    public void init() {
+    public void run() {
 
         grid = new Grid(Settings.DEFAULT_GRID_WIDTH / Settings.DEFAULT_NODE_SIZE,
                 Settings.DEFAULT_GRID_HEIGHT / Settings.DEFAULT_NODE_SIZE);
@@ -25,13 +25,15 @@ public class SnakeApp {
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
-        GameController controller=new GameController(grid, gameView);
-        window.addKeyListener(controller);
-        // your code here： 初始化gameController，并为window设置监听器
-    }
 
+        gameController = new GameController(grid, gameView);
+        window.addKeyListener(gameController);
+
+        new Thread(gameController).start();
+    }
+    
     public static void main(String[] args) {
-        SnakeApp snakeApp = new SnakeApp();
-        snakeApp.init();
+
+        SwingUtilities.invokeLater(new SnakeApp());
     }
 }

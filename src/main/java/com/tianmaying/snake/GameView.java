@@ -7,7 +7,7 @@ public class GameView {
 
     private final Grid grid;
     private JPanel canvas;
-    
+
     public GameView(Grid grid) {
         this.grid = grid;
     }
@@ -23,11 +23,15 @@ public class GameView {
         };
     }
 
+    public void showGameOverMessage() {
+        JOptionPane.showMessageDialog(null, "游戏结束", "游戏结束", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     /**
      * 渲染整个游戏界面
      */
     public void draw() {
-        this.canvas.repaint();
+        canvas.repaint();
     }
 
     /**
@@ -40,7 +44,6 @@ public class GameView {
         for (Node squareArea : body) {
             drawSquare(graphics, squareArea, Settings.DEFAULT_SNAKE_COLOR);
         }
-        drawSquare(graphics,snake.getHead(), Color.ORANGE);
     }
 
     /**

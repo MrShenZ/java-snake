@@ -1,5 +1,6 @@
 package com.tianmaying.snake;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Grid {
@@ -20,6 +21,15 @@ public class Grid {
         this.height = height;
         status = new boolean[width][height];
 
+        init();
+    }
+
+    public void init() {
+        for (int i = 0; i < width; ++i) {
+            Arrays.fill(status[i], false);
+        }
+
+        snakeDirection = Direction.LEFT;
         initSnake();
         createFood();
     }
@@ -81,7 +91,7 @@ public class Grid {
         
         return false;
     }
-    
+
     public void changeDirection(Direction newDirection) {
         if (snakeDirection.compatibleWith(newDirection)) {
             snakeDirection = newDirection;
