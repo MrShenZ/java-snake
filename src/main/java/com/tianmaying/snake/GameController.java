@@ -19,12 +19,16 @@ public class GameController implements KeyListener {
     	int code=e.getKeyCode();
     	if(code==KeyEvent.VK_UP){
     		grid.changeDirection(Direction.UP);
+    		grid.nextRound();
     	}else if(code==KeyEvent.VK_RIGHT){
     		grid.changeDirection(Direction.RIGHT);
+    		grid.nextRound();
     	}else if(code==KeyEvent.VK_DOWN){
     		grid.changeDirection(Direction.DOWN);
+    		grid.nextRound();
     	}else if(code==KeyEvent.VK_LEFT){
     		grid.changeDirection(Direction.LEFT);
+    		grid.nextRound();
     	}
     }
 
