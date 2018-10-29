@@ -17,8 +17,14 @@ public class GameController implements KeyListener {
     public void keyPressed(KeyEvent e) {
         // your code here
     	int code=e.getKeyCode();
-    	if(code==KeyEvent.VK_UP || code==KeyEvent.VK_RIGHT || code==KeyEvent.VK_DOWN || code==KeyEvent.VK_LEFT){
+    	if(code==KeyEvent.VK_UP){
     		grid.changeDirection(Direction.UP);
+    	}else if(code==KeyEvent.VK_RIGHT){
+    		grid.changeDirection(Direction.RIGHT);
+    	}else if(code==KeyEvent.VK_DOWN){
+    		grid.changeDirection(Direction.DOWN);
+    	}else if(code==KeyEvent.VK_LEFT){
+    		grid.changeDirection(Direction.LEFT);
     	}
     }
 
