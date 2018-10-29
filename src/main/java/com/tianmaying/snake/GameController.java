@@ -30,6 +30,7 @@ public class GameController implements KeyListener {
     		grid.changeDirection(Direction.LEFT);
     		grid.nextRound();
     	}
+    	gameView.draw();
     }
 
     @Override
