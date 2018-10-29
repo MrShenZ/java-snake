@@ -58,3 +58,7 @@ out
 mvnw
 mvnw.cmd
 /target
+
+test
+
+

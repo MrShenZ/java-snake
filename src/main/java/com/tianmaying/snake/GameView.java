@@ -7,7 +7,7 @@ public class GameView {
 
     private final Grid grid;
     private JPanel canvas;
-
+    
     public GameView(Grid grid) {
         this.grid = grid;
     }
@@ -36,10 +36,10 @@ public class GameView {
      * @param snake
      */
     public void drawSnake(Graphics graphics, Snake snake) {
-        // your code here
-    	for(Node node:snake.getBody()){
-    		drawSquare(graphics,node, Settings.DEFAULT_SNAKE_COLOR);
-    	}
+        java.util.List<Node> body = snake.getBody();
+        for (Node squareArea : body) {
+            drawSquare(graphics, squareArea, Settings.DEFAULT_SNAKE_COLOR);
+        }
     }
 
     /**
@@ -48,19 +48,17 @@ public class GameView {
      * @param squareArea
      */
     public void drawFood(Graphics graphics, Node squareArea) {
-        // your code here
-    	drawCircle(graphics, squareArea, Settings.DEFAULT_FOOD_COLOR);
+        drawCircle(graphics, squareArea, Settings.DEFAULT_FOOD_COLOR);
     }
 
     /**
      * 渲染棋盘背景
-     *
      * @param graphics
      */
     public void drawGridBackground(Graphics graphics) {
         graphics.setColor(Settings.DEFAULT_BACKGROUND_COLOR);
-        graphics.fillRect(0, 0,Settings.DEFAULT_GRID_WIDTH, Settings.DEFAULT_GRID_HEIGHT);
-        // your code here
+        graphics.fillRect(0, 0, grid.getWidth() * Settings.DEFAULT_NODE_SIZE,
+                grid.getHeight() * Settings.DEFAULT_NODE_SIZE);
     }
 
 
@@ -91,4 +89,5 @@ public class GameView {
     public JPanel getCanvas() {
         return canvas;
     }
+    
 }

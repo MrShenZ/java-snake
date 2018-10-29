@@ -1,6 +1,5 @@
 package com.tianmaying.snake;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Grid {
@@ -19,16 +18,16 @@ public class Grid {
 
         this.width = width;
         this.height = height;
+        status = new boolean[width][height];
 
-        status = new boolean[width][];
-        for (int i = 0; i < width; ++i) {
-            status[i] = new boolean[height];
-            Arrays.fill(status[i], false);
-        }
         initSnake();
         createFood();
     }
 
+    /**
+     * 初始化棋盘上的贪吃蛇
+     * @return
+     */
     private Snake initSnake() {
         snake = new Snake();
 
@@ -43,6 +42,10 @@ public class Grid {
         return snake;
     }
 
+    /**
+     * 随机产生一个食物（Node类型），并返回该Node
+     * @return
+     */
     public Node createFood() {
         int x, y;
 
@@ -56,6 +59,11 @@ public class Grid {
         return food;
     }
 
+    /**
+     * 贪吃蛇往snakeDirection方向移动一格
+     *
+     * @return 如果游戏结束，返回false，否则返回true
+     */
     public boolean nextRound() {
         Node snakeTail = snake.move(snakeDirection);
         Node snakeHead = snake.getHead();
@@ -77,6 +85,8 @@ public class Grid {
     public void changeDirection(Direction newDirection) {
         if (snakeDirection.compatibleWith(newDirection)) {
             snakeDirection = newDirection;
+        }else{
+        	snake.move(snakeDirection);
         }
     }
 
