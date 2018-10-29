@@ -85,6 +85,8 @@ public class Grid {
     public void changeDirection(Direction newDirection) {
         if (snakeDirection.compatibleWith(newDirection)) {
             snakeDirection = newDirection;
+        }else{
+        	nextRound();
         }
     }
 
