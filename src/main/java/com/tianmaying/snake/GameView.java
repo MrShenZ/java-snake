@@ -40,6 +40,7 @@ public class GameView {
         for (Node squareArea : body) {
             drawSquare(graphics, squareArea, Settings.DEFAULT_SNAKE_COLOR);
         }
+        drawSquare(graphics,snake.getHead(), Color.ORANGE);
     }
 
     /**

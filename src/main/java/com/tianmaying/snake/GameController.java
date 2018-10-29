@@ -20,17 +20,20 @@ public class GameController implements KeyListener {
     	if(code==KeyEvent.VK_UP){
     		grid.changeDirection(Direction.UP);
     		grid.nextRound();
+    		gameView.draw();
     	}else if(code==KeyEvent.VK_RIGHT){
     		grid.changeDirection(Direction.RIGHT);
     		grid.nextRound();
+    		gameView.draw();
     	}else if(code==KeyEvent.VK_DOWN){
     		grid.changeDirection(Direction.DOWN);
     		grid.nextRound();
+    		gameView.draw();
     	}else if(code==KeyEvent.VK_LEFT){
     		grid.changeDirection(Direction.LEFT);
     		grid.nextRound();
+    		gameView.draw();
     	}
-    	gameView.draw();
     }
 
     @Override
