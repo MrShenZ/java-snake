@@ -36,6 +36,16 @@ public class GameController implements Runnable, KeyListener {
         }
 
         // your code here：处理回车键，重新开始游戏
+        if(running==true && keyCode==KeyEvent.VK_SPACE){
+        	running=false;
+        }
+        if(running=false && keyCode==KeyEvent.VK_SPACE){
+        	running=true;
+        }
+        if((running==false || !grid.nextRound()) && keyCode==KeyEvent.VK_ENTER){
+        	grid.init();
+        	
+        }
     }
 
     /**
@@ -51,6 +61,11 @@ public class GameController implements Runnable, KeyListener {
             }
 
             // your code here
+            if(grid.nextRound()){
+            	gameView.draw();
+            }else{
+            	gameView.showGameOverMessage();
+            }
         }
 
         running = false;
