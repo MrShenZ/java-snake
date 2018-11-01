@@ -37,10 +37,12 @@ public class GameController implements Runnable, KeyListener {
             		running=false;
             	}else{
             		running=true;
+            		new Thread(this).start();
             	}
             	break;
             case KeyEvent.VK_ENTER:
             	grid.init();
+            	new Thread(this).start();
             	break;
             default:
         }
@@ -55,7 +57,7 @@ public class GameController implements Runnable, KeyListener {
 
         while (running) {
             try {
-                Thread.sleep(200);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 break;
             }
@@ -68,12 +70,6 @@ public class GameController implements Runnable, KeyListener {
             }
         }
         running = false;
-        try{
-        	Thread.sleep(2000);
-        }catch(InterruptedException e1){
-        	e1.printStackTrace();
-        }
-        
 
     }
 
