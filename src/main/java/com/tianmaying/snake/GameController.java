@@ -37,7 +37,6 @@ public class GameController implements Runnable, KeyListener {
             		running=false;
             	}else{
             		running=true;
-            		run();
             	}
             	break;
             case KeyEvent.VK_ENTER:
@@ -45,7 +44,6 @@ public class GameController implements Runnable, KeyListener {
             	break;
             default:
         }
-
         // your code here：处理回车键，重新开始游戏
         
     }
@@ -69,8 +67,13 @@ public class GameController implements Runnable, KeyListener {
             	gameView.showGameOverMessage();
             }
         }
-
         running = false;
+        try{
+        	Thread.sleep(2000);
+        }catch(InterruptedException e1){
+        	e1.printStackTrace();
+        }
+        
 
     }
 
