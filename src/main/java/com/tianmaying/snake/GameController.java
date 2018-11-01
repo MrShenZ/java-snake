@@ -57,7 +57,7 @@ public class GameController implements Runnable, KeyListener {
 
         while (running) {
             try {
-                Thread.sleep(Settings.DEFAULT_MOVE_INTERVAL);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 break;
             }
