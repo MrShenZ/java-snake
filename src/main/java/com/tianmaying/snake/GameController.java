@@ -36,8 +36,8 @@ public class GameController implements Runnable, KeyListener {
             	if(running==true){
             		running=false;
             	}else{
-            		new Thread(this).start();
             		running=true;
+            		new Thread(this).start();
             	}
             	break;
             case KeyEvent.VK_ENTER:
