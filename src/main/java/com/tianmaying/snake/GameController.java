@@ -42,6 +42,8 @@ public class GameController implements Runnable, KeyListener {
             	break;
             case KeyEvent.VK_ENTER:
             	grid.init();
+            	running=true;
+            	new Thread(this).start();
             	break;
             default:
         }
@@ -53,7 +55,7 @@ public class GameController implements Runnable, KeyListener {
      * 按一定速率自动移  动贪吃蛇
      */
     public void run() {
-
+		
         while (running) {
             try {
                 Thread.sleep(500);
@@ -68,12 +70,12 @@ public class GameController implements Runnable, KeyListener {
             }
             
         }
-        try {
-            Thread.sleep(100000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         running = false;
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            
+        }
     }
 
     @Override
