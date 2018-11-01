@@ -41,11 +41,9 @@ public class GameController implements Runnable, KeyListener {
             	}
             	break;
             case KeyEvent.VK_ENTER:
-            	if(running==false){
 	            	grid.init();
 	            	running=true;
 	            	new Thread(this).start();
-            	}
             	break;
             default:
         }
@@ -73,8 +71,6 @@ public class GameController implements Runnable, KeyListener {
             }
             
         }
-        running = false;
-        
     }
 
     @Override

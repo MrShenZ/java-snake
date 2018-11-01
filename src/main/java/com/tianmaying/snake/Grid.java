@@ -14,7 +14,7 @@ public class Grid {
 
     // 初始方向设置为向左
     private Direction snakeDirection = Direction.LEFT;
-    
+    private Direction lastDirection=snakeDirection;
     public Grid(int width, int height) {
 
         this.width = width;
@@ -93,9 +93,10 @@ public class Grid {
     }
 
     public void changeDirection(Direction newDirection) {
-        if (snakeDirection.compatibleWith(newDirection)) {
+        if (lastDirection.compatibleWith(newDirection)) {
             snakeDirection = newDirection;
         }
+        lastDirection=newDirection;
     }
 
     public boolean validPosition(Node area) {
