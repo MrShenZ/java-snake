@@ -41,9 +41,11 @@ public class GameController implements Runnable, KeyListener {
             	}
             	break;
             case KeyEvent.VK_ENTER:
-            	grid.init();
-            	running=true;
-            	new Thread(this).start();
+            	if(running==false){
+	            	grid.init();
+	            	running=true;
+	            	new Thread(this).start();
+            	}
             	break;
             default:
         }
@@ -67,15 +69,12 @@ public class GameController implements Runnable, KeyListener {
             	gameView.draw();
             }else{
             	gameView.showGameOverMessage();
+            	running=false;
             }
             
         }
         running = false;
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            
-        }
+        
     }
 
     @Override
