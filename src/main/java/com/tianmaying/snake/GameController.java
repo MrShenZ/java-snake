@@ -32,20 +32,21 @@ public class GameController implements Runnable, KeyListener {
             case KeyEvent.VK_RIGHT:
                 grid.changeDirection(Direction.RIGHT);
                 break;
+            case KeyEvent.VK_SPACE:
+            	if(running==true){
+            		running=false;
+            	}else{
+            		running=true;
+            	}
+            	break;
+            case KeyEvent.VK_ENTER:
+            	grid.init();
+            	break;
             default:
         }
 
         // your code here：处理回车键，重新开始游戏
-        if(running==true && keyCode==KeyEvent.VK_SPACE){
-        	running=false;
-        }
-        if(running=false && keyCode==KeyEvent.VK_SPACE){
-        	running=true;
-        }
-        if((running==false || !grid.nextRound()) && keyCode==KeyEvent.VK_ENTER){
-        	grid.init();
-        	
-        }
+        
     }
 
     /**
