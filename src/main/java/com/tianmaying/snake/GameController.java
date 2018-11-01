@@ -37,6 +37,7 @@ public class GameController implements Runnable, KeyListener {
             		running=false;
             	}else{
             		running=true;
+            		run();
             	}
             	break;
             case KeyEvent.VK_ENTER:
