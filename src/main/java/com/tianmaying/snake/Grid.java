@@ -77,7 +77,7 @@ public class Grid {
     public boolean nextRound() {
         Node snakeTail = snake.move(snakeDirection);
         Node snakeHead = snake.getHead();
-        
+        lastDirection=snakeDirection;
         if (validPosition(snakeHead)) {
             if (isFood(snakeHead)) {
                 snake.addTail(snakeTail);
@@ -86,7 +86,6 @@ public class Grid {
                 dispose(snakeTail);
             }
             occupy(snakeHead);
-            lastDirection=snakeDirection;
             return true;
         }
         
@@ -94,7 +93,7 @@ public class Grid {
     }
 
     public void changeDirection(Direction newDirection) {
-    	if (lastDirection.compatibleWith(newDirection)) {
+    	if (lastDirection.compatibleWith(newDirection) || lastDirection==newDirection) {
             snakeDirection = newDirection;
         }
     }
