@@ -12,7 +12,8 @@ public class GameView {
         this.grid = grid;
     }
 
-    public void init() {
+    @SuppressWarnings("serial")
+	public void init() {
         canvas = new JPanel() {
             @Override
             public void paintComponent(Graphics graphics) {
@@ -75,7 +76,7 @@ public class GameView {
     private void drawSquare(Graphics graphics, Node squareArea, Color color) {
         graphics.setColor(color);
         int size = Settings.DEFAULT_NODE_SIZE;
-        graphics.fillRect(squareArea.getX() * size, squareArea.getY() * size, size - 1, size - 1);
+        graphics.fillRect(squareArea.getX() * size, squareArea.getY() * size, size-1 , size-1 );
     }
 
     /**

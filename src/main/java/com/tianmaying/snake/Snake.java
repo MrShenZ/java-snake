@@ -6,7 +6,7 @@ public class Snake {
 
     private final LinkedList<Node> body = new LinkedList<>();
 
-    public Node eat(Node food) {
+    /*public Node eat(Node food) {
 
         if (!isNeighbor(body.getFirst(), food)) {
             return null;
@@ -14,7 +14,7 @@ public class Snake {
 
         body.addFirst(food);
         return food;
-    }
+    }*/
 
     /**
      * 往某个方向移动，蛇的身体可能会重叠，重叠判断由<code>Grid</code>处理。
@@ -58,7 +58,7 @@ public class Snake {
         return body;
     }
 
-    private boolean isNeighbor(Node a, Node b) {
+    /*private boolean isNeighbor(Node a, Node b) {
         return Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY()) == 1;
-    }
+    }*/
 }

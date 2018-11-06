@@ -14,11 +14,12 @@ public class SnakeApp implements Runnable {
         grid = new Grid(Settings.DEFAULT_GRID_WIDTH / Settings.DEFAULT_NODE_SIZE,
                 Settings.DEFAULT_GRID_HEIGHT / Settings.DEFAULT_NODE_SIZE);
 
-        JFrame window = new JFrame("天码营贪吃蛇游戏");
-        Container contentPane = window.getContentPane();
         gameView = new GameView(grid);
         gameView.init();
         gameView.getCanvas().setPreferredSize(new Dimension(Settings.DEFAULT_GRID_WIDTH, Settings.DEFAULT_GRID_HEIGHT));
+        
+        JFrame window = new JFrame("天码营贪吃蛇游戏");
+        Container contentPane = window.getContentPane();
         contentPane.add(gameView.getCanvas(), BorderLayout.CENTER);
 
         window.pack();

@@ -13,8 +13,8 @@ public class Grid {
     private Node food;
 
     // 初始方向设置为向左
-    private Direction snakeDirection= Direction.LEFT;
-    private Direction lastDirection= Direction.LEFT;
+    private Direction snakeDirection;
+    private Direction lastDirection;
     public Grid(int width, int height) {
 
         this.width = width;
@@ -30,6 +30,7 @@ public class Grid {
         }
 
         snakeDirection = Direction.LEFT;
+        lastDirection=Direction.LEFT;
         initSnake();
         createFood();
     }

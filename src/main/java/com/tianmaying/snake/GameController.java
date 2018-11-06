@@ -41,9 +41,9 @@ public class GameController implements Runnable, KeyListener {
             	}
             	break;
             case KeyEvent.VK_ENTER:
-	            	grid.init();
-	            	running=true;
-	            	new Thread(this).start();
+            	grid.init();
+            	running=true;
+            	new Thread(this).start();
             	break;
             default:
         }
@@ -58,7 +58,7 @@ public class GameController implements Runnable, KeyListener {
 		
         while (running) {
             try {
-                Thread.sleep(200);
+                Thread.sleep(Settings.DEFAULT_MOVE_INTERVAL);
             } catch (InterruptedException e) {
                 break;
             }
