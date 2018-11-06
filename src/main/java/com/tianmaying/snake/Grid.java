@@ -8,7 +8,7 @@ public class Grid {
     public final boolean status[][];
     private final int width;
     private final int height;
-
+    private int score;
     private Snake snake;
     private Node food;
 
@@ -28,7 +28,7 @@ public class Grid {
         for (int i = 0; i < width; ++i) {
             Arrays.fill(status[i], false);
         }
-
+        score=0;
         snakeDirection = Direction.LEFT;
         lastDirection=Direction.LEFT;
         initSnake();
@@ -81,6 +81,7 @@ public class Grid {
         lastDirection=snakeDirection;
         if (validPosition(snakeHead)) {
             if (isFood(snakeHead)) {
+            	score++;
                 snake.addTail(snakeTail);
                 createFood();
             } else {
@@ -132,5 +133,8 @@ public class Grid {
 
     public int getHeight() {
         return height;
+    }
+    public int getScore(){
+    	return score;
     }
 }
