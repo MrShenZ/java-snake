@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Grid {
-
+	private int speed;
+	private String praise;
     public final boolean status[][];
     private final int width;
     private final int height;
@@ -28,6 +29,8 @@ public class Grid {
         for (int i = 0; i < width; ++i) {
             Arrays.fill(status[i], false);
         }
+        praise="小菜鸡→_→";
+		speed=200;
         score=0;
         snakeDirection = Direction.LEFT;
         lastDirection=Direction.LEFT;
@@ -81,8 +84,8 @@ public class Grid {
         lastDirection=snakeDirection;
         if (validPosition(snakeHead)) {
             if (isFood(snakeHead)) {
-            	score++;
                 snake.addTail(snakeTail);
+                score++;
                 createFood();
             } else {
                 dispose(snakeTail);
@@ -137,4 +140,45 @@ public class Grid {
     public int getScore(){
     	return score;
     }
+    public int speed(){
+		int score=getScore();
+		switch(score){
+			case 100:
+				speed=195;
+				praise="加油！^_^";
+				break;
+			case 20:
+				speed=190;
+				praise="很棒(*^▽^*)";
+				break;
+			case 30:
+				speed=185;
+				praise="111分有福利哦！";
+				break;
+			case 40:
+				speed=180;
+				praise="大神";
+				break;
+			case 66:
+				speed=175;
+				praise="66大神";
+				break;
+			case 88:
+				speed=190;
+				praise="88大神";
+				break;
+			case 99:
+				speed=185;
+				praise="99大神";
+				break;
+			case 111:
+				speed=180;
+				praise="你通关了我可以请你喝奶茶吗";
+				break;
+		}
+		return speed;
+	}
+	public String getPraise(){
+		return praise;
+	}
 }

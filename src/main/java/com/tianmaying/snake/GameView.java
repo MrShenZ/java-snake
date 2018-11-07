@@ -1,6 +1,7 @@
 package com.tianmaying.snake;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 public class GameView {
@@ -20,6 +21,8 @@ public class GameView {
                 drawGridBackground(graphics);
                 drawSnake(graphics, grid.getSnake());
                 drawFood(graphics, grid.getFood());
+                drawString(graphics);
+                drawStringPraise(graphics);
             }
         };
     }
@@ -90,7 +93,16 @@ public class GameView {
         int size = Settings.DEFAULT_NODE_SIZE;
         graphics.fillOval(squareArea.getX() * size, squareArea.getY() * size, size, size);
     }
-
+	private void drawString(Graphics graphics){
+		graphics.setColor(Color.RED);
+		graphics.setFont(new Font(null, Font.PLAIN, 25));
+		graphics.drawString(Integer.toString(grid.getScore()), Settings.DEFAULT_GRID_WIDTH-50, 30);
+	}
+	private void drawStringPraise(Graphics graphics){
+		graphics.setColor(Color.RED);
+		graphics.setFont(new Font(null, Font.PLAIN, 15));
+		graphics.drawString(grid.getPraise(), Settings.DEFAULT_GRID_WIDTH-120, 60);
+	}
     public JPanel getCanvas() {
         return canvas;
     }

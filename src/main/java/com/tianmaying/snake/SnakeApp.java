@@ -19,13 +19,8 @@ public class SnakeApp implements Runnable {
         gameView.getCanvas().setPreferredSize(new Dimension(Settings.DEFAULT_GRID_WIDTH, Settings.DEFAULT_GRID_HEIGHT));
         
         JFrame window = new JFrame("天码营贪吃蛇游戏");
-        window.setPreferredSize(new Dimension(1000, 500));
-		JLabel label=new JLabel(Integer.toString(grid.getScore()));
-		label.setBounds(800, 200, 800, 200);
-		label.setFont(new Font("微软雅黑", Font.PLAIN, 200));
         Container contentPane = window.getContentPane();
         contentPane.add(gameView.getCanvas(), BorderLayout.CENTER);
-
         window.pack();
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
